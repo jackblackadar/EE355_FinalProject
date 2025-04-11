@@ -1,7 +1,6 @@
 
 #ifndef CONTACT_H
 #define CONTACT_H
-
 #include <iostream>
 #include <string>
 // TODO: You may need to add other libraries here!
@@ -10,9 +9,9 @@ using namespace std;
 
 class Contact {
     // TODO: private or protected? Look at your children!	
-    // USE PROTECTED SO DERIVED CLASSES CAN ACCESS IT
+    // USE PROTECTED SO DERIVED CLASSES CAN ACCESS IT, but it can't be accessed outside the class
 protected:
-	string type;
+	string type; // what is the point of type the class name (email or phone) already define a type
 public:
     // virtual functions overridden in derived classes
 	virtual void print() = 0;
@@ -28,7 +27,7 @@ public:
     // TODO: Complete me!
 
     // constructor, expanded in .cpp file
-    Email(string type, string email_addr) {};
+    Email(string type, string email_addr);
 
     // override functions
     void set_contact() override;
@@ -48,7 +47,7 @@ public:
     // TODO: Complete me!
 
     // constructor, expanded in .cpp file
-    Phone(string type, string phone_number) {};
+    Phone(string type, string phone_number);
 
     // override functions
     void set_contact() override;

@@ -16,15 +16,18 @@ void Email::set_contact(){
     // Do not change the prompts!
     cout << "Enter the type of email address: ";
     getline(cin, this->type);
-    cout << "Enter email address: ";
-    getline(cin, this->email_addr);
+    while(true){
+        cout << "Enter email address: ";
+        getline(cin, this->email_addr);
+        return; // REGEX goes here for validation
+    }
+    
 
     /* error handling for answer to improve robustness???? */
 }
 
 
 string Email::get_contact(string style){
-    // Note: We have default argument in declaration and not in definition!
     if (style=="full")
 	    return "(" + type + ") " + email_addr;
     else 
