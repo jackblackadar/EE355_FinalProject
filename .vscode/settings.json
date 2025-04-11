@@ -79,6 +79,9 @@
     "xutility": "cpp",
     "*.tcc": "cpp",
     "memory_resource": "cpp",
-    "string_view": "cpp"
+    "string_view": "cpp",
+    "bitset": "cpp",
+    "regex": "cpp",
+    "stack": "cpp"
   }
 }

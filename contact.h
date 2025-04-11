@@ -23,6 +23,7 @@ public:
 class Email: public Contact{
 private:
     string email_addr;
+    bool is_valid_email(const string& email);
 public:
     // TODO: Complete me!
 
@@ -43,6 +44,7 @@ private:
     // TODO: modify dataType! Can int store 10 digit phone-number? 
     // NO, USE STRING INSTEAD
 	string phone_num; 
+    bool is_valid_number(const string& number);
 public:
     // TODO: Complete me!
 

@@ -1,7 +1,6 @@
-
 #include "contact.h"
-// TODO: Add needed libraries! 
 #include <iostream>
+#include <regex>
 using namespace std;
 
 // Email constructor
@@ -11,19 +10,27 @@ Email::Email(string type, string email_addr) {
     this->email_addr = email_addr;
 }
 
+bool Email::is_valid_email(const string& email){
+    // looks for somthing like bob@gmail.com
+    std::regex pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    return std::regex_match(email, pattern);
+}
 
 void Email::set_contact(){
     // Do not change the prompts!
     cout << "Enter the type of email address: ";
     getline(cin, this->type);
+    string emailBuffer;
     while(true){
         cout << "Enter email address: ";
-        getline(cin, this->email_addr);
-        return; // REGEX goes here for validation
+        getline(cin, emailBuffer);
+        if(is_valid_email(emailBuffer)){
+            this->email_addr = emailBuffer;
+            return;
+        } else{
+            cout << "Invalid email, please try again\n";
+        }
     }
-    
-
-    /* error handling for answer to improve robustness???? */
 }
 
 
@@ -68,37 +75,40 @@ Phone::Phone(string type, string num){
 
 }
 
+bool Phone::is_valid_number(const string& number){
+    // looks for something like 0123456789
+    std::regex pattern("^\\D*(\\d\\D*){10}$"); // extra \ because cpp thinkis a single \ is an escapce character and not regex
+    return std::regex_match(number, pattern);
+}
 
 void Phone::set_contact(){
-    // TODO: Complete this method
     // Use the same prompts as given!
 	cout <<"Enter the type of phone number: ";
     getline(cin, this->type);
-	cout << "Enter the phone number: ";
-    getline(cin, this->phone_num);
- 
+    string numberBuffer;
+    cout << "Enter the phone number: ";
+    getline(cin, numberBuffer);
+
+    // cout << "Entered the number: " << numberBuffer <<'\n';
     // prep phone num string SAME AS CONSTRUCTOR
     string cleaned_num = "";
-    for(char c : this->phone_num) {  //iterate over each character in num string
+    for(char c : numberBuffer) {  //iterate over each character in num string
         if(c != '-' && c != ' ') {  // only add numbers, no dash or spaces
             cleaned_num += c;
         }
     }
     // reformat with dashes
-    if(cleaned_num.length() >= 10) {
+    if(is_valid_number(cleaned_num)){
         this->phone_num = cleaned_num.substr(0, 3) + "-" + cleaned_num.substr(3, 3) + "-" + cleaned_num.substr(6);
     }
     else {
-        cout << "Unexpected phone number entered." << endl; // warning message
-        this->phone_num = cleaned_num;
+        cout << "Invalid number input. Enter 10 digits exactly" << endl; 
+        this->set_contact();
     }
-
-    // error handling for robustness???
 }
 
 
 string Phone::get_contact(string style){
-    // TODO: Complete this method, get hint from Email 
     if (style=="full")
 	    return "(" + type + ") " + phone_num;
     else 
