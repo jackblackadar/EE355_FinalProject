@@ -16,6 +16,22 @@ void Date::print_date() {
     cout << str_month << " " << day << ", " << year << endl;
 }
 
+Date::Date(unsigned short month, unsigned short day,  unsigned short year)  {
+    // validate the day and month of date
+    if (month < 1 || month > 12) {
+        cout << "Invalid month. Setting to default (1)." << endl;
+        month = 1;
+    }
+    if (day < 1 || day > 31) {
+        cout << "Invalid day. Setting to default (1)." << endl;
+        day = 1;
+    }
+    if (year < 1) {
+        cout << "Are you trying to store BCE years as negative? Setting to default (1)." << endl;
+        year = 1;
+    }
+} 
+
 void Date::set_date() {
     // get user info
     string temp;
@@ -34,7 +50,7 @@ void Date::set_date() {
     // convert strings to integers
     try {
         month = stoi(monthStr);
-        day = stoi(dayStr);
+        day =  (dayStr);
         year = stoi(yearStr);
     } catch (const exception& e) {
         cout << "Error parsing date. Using default values." << endl;

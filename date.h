@@ -11,10 +11,10 @@ private:
     int year;
 public: 
     // constructor
-    Date(int day, int month, int year) : day(day), month(month), year(year) {} 
+    Date(unsigned short month, unsigned short day, unsigned short year);
     // function definition
-    void print_date() {};
-    void set_date() {};
+    void print_date();
+    void set_date();
 };
 
 
