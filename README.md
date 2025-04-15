@@ -2,6 +2,13 @@
 
 Group: Jack Blackadar, Aleena Imran, Karen Mkrtchyan
 
+Directions for compiling the code:
+TODO
+
+Not Working Parts: N/A
+
+References: N/A (other than class slides)
+
 Log:
 
 4/7:
