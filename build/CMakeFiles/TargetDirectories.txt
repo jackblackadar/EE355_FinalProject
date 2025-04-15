@@ -1,3 +1,4 @@
-C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/TestContact.dir
-C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/ZERO_CHECK.dir
+/Users/nellimikayelyan/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/TestContact.dir
+/Users/nellimikayelyan/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/TestDate.dir
+/Users/nellimikayelyan/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/edit_cache.dir
+/Users/nellimikayelyan/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/rebuild_cache.dir

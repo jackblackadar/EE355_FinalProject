@@ -50,7 +50,7 @@ void Date::set_date() {
     // convert strings to integers
     try {
         month = stoi(monthStr);
-        day =  (dayStr);
+        day = stoi(dayStr);
         year = stoi(yearStr);
     } catch (const exception& e) {
         cout << "Error parsing date. Using default values." << endl;

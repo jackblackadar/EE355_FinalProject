@@ -1,5 +1,5 @@
 #ifndef DATE_H
-#define DATA_H
+#define DATE_H
 
 #include "fstream"
 
