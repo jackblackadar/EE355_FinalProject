@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <cstdlib> 
 using namespace std;
 
 // allows for index of month to access string name
@@ -50,14 +49,9 @@ void Date::set_date() {
     
     // convert strings to integers
     try {
-        month = atoi(monthStr.c_str());
-        day = atoi(dayStr.c_str());
-        year = atoi(yearStr.c_str());
-        
-        // Check if conversion was successful
-        if (month == 0 && monthStr != "0") throw std::exception();
-        if (day == 0 && dayStr != "0") throw std::exception();
-        if (year == 0 && yearStr != "0") throw std::exception();
+        month = stoi(monthStr);
+        day =  (dayStr);
+        year = stoi(yearStr);
     } catch (const exception& e) {
         cout << "Error parsing date. Using default values." << endl;
         // set to default values if conversion fails

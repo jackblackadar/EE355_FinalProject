@@ -1,39 +1,19 @@
 #include "contact.h"
 #include <iostream>
-#include <string>
-
+#include <regex>
 using namespace std;
 
-// change from regex to manual string checks
-bool Email::is_valid_email(const string& email){
-    // Check for @ symbol
-    size_t at_pos = email.find('@');
-    if (at_pos == string::npos || at_pos == 0 || at_pos == email.length() - 1)
-        return false;
-        
-    // Check for domain with period
-    size_t dot_pos = email.find('.', at_pos);
-    if (dot_pos == string::npos || dot_pos == at_pos + 1 || dot_pos == email.length() - 1)
-        return false;
-        
-    // Check for valid characters (simplified)
-    for (size_t i = 0; i < email.length(); i++) {
-        char c = email[i];
-        if (!isalnum(c) && c != '@' && c != '.' && c != '_' && c != '-' && c != '+')
-            return false;
-    }
-    
-    return true;
+// Email constructor
+Email::Email(string type, string email_addr) {
+    // self ptr to set values
+    this->type = type;
+    this->email_addr = email_addr;
 }
 
-bool Phone::is_valid_number(const string& number){
-    // Check if it has exactly 10 digits
-    int digit_count = 0;
-    for (size_t i = 0; i < number.length(); i++) {
-        if (isdigit(number[i]))
-            digit_count++;
-    }
-    return digit_count == 10;
+bool Email::is_valid_email(const string& email){
+    // looks for somthing like bob@gmail.com
+    std::regex pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    return std::regex_match(email, pattern);
 }
 
 void Email::set_contact(){
@@ -78,9 +58,8 @@ Phone::Phone(string type, string num){
     
     // prep phone num string
     string cleaned_num = "";
-    for(size_t i = 0; i < num.length(); i++) {  //iterate over each character in num string
-        char c = num[i];
-        if(c != '-' && c != ' ') { // only add numbers, no dash or spaces
+    for(char c : num) {  //iterate over each character in num string
+        if(c != '-' && c != ' ') {  // only add numbers, no dash or spaces
             cleaned_num += c;
         }
     }
@@ -112,8 +91,8 @@ void Phone::set_contact(){
 
     // cout << "Entered the number: " << numberBuffer <<'\n';
     // prep phone num string SAME AS CONSTRUCTOR
-    for(size_t i = 0; i < numberBuffer.length(); i++) {  // iterate over each character in num string
-        char c = numberBuffer[i];
+    string cleaned_num = "";
+    for(char c : numberBuffer) {  //iterate over each character in num string
         if(c != '-' && c != ' ') {  // only add numbers, no dash or spaces
             cleaned_num += c;
         }
