@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Install script for directory: /home/blackadar/Documents/USC/EE355/EE355_FinalProject
+=======
+# Install script for directory: C:/Users/narek/Documents/GitHub/EE355_FinalProject
+>>>>>>> Stashed changes
 =======
 # Install script for directory: C:/Users/narek/Documents/GitHub/EE355_FinalProject
 >>>>>>> Stashed changes
@@ -17,7 +21,11 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     set(CMAKE_INSTALL_CONFIG_NAME "")
+=======
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+>>>>>>> Stashed changes
 =======
     set(CMAKE_INSTALL_CONFIG_NAME "Release")
 >>>>>>> Stashed changes
@@ -46,11 +54,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 if(CMAKE_INSTALL_COMPONENT)
@@ -69,7 +80,11 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   file(WRITE "/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+  file(WRITE "C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> Stashed changes
 =======
   file(WRITE "C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/${CMAKE_INSTALL_MANIFEST}"
 >>>>>>> Stashed changes

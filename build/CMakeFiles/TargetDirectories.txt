@@ -1,12 +1,18 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/TestContact.dir
 /home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/TestDate.dir
 /home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/edit_cache.dir
 /home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/rebuild_cache.dir
 =======
+=======
+>>>>>>> Stashed changes
 C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/TestContact.dir
 C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/TestDate.dir
 C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/TestNetwork.dir
 C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/ALL_BUILD.dir
 C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/ZERO_CHECK.dir
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

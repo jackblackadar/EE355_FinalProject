@@ -163,6 +163,7 @@ events:
       - "Detecting C compiler ABI info"
     directories:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       source: "/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-R46kPI"
       binary: "/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-R46kPI"
     cmakeVariables:
@@ -170,6 +171,8 @@ events:
       CMAKE_C_FLAGS_DEBUG: "-g"
       CMAKE_EXE_LINKER_FLAGS: ""
 =======
+=======
+>>>>>>> Stashed changes
       source: "C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-qmp8ae"
       binary: "C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-qmp8ae"
     cmakeVariables:
@@ -181,6 +184,7 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         Change Dir: '/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-R46kPI'
         
@@ -250,6 +254,10 @@ events:
 =======
         Change Dir: 'C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-qmp8ae'
         
+=======
+        Change Dir: 'C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-qmp8ae'
+        
+>>>>>>> Stashed changes
         Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe" cmTC_325f9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
@@ -281,6 +289,9 @@ events:
             0 Error(s)
         
         Time Elapsed 00:00:00.51
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         
       exitCode: 0
@@ -495,6 +506,7 @@ events:
       - "Detecting CXX compiler ABI info"
     directories:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       source: "/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-HOiIHR"
       binary: "/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-HOiIHR"
     cmakeVariables:
@@ -503,6 +515,8 @@ events:
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
       CMAKE_EXE_LINKER_FLAGS: ""
 =======
+=======
+>>>>>>> Stashed changes
       source: "C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-c2r107"
       binary: "C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-c2r107"
     cmakeVariables:
@@ -515,6 +529,7 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         Change Dir: '/home/blackadar/Documents/USC/EE355/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-HOiIHR'
         
@@ -588,6 +603,10 @@ events:
 =======
         Change Dir: 'C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-c2r107'
         
+=======
+        Change Dir: 'C:/Users/narek/Documents/GitHub/EE355_FinalProject/build/CMakeFiles/CMakeScratch/TryCompile-c2r107'
+        
+>>>>>>> Stashed changes
         Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe" cmTC_ef80e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
@@ -619,6 +638,9 @@ events:
             0 Error(s)
         
         Time Elapsed 00:00:00.51
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         
       exitCode: 0
@@ -823,5 +845,8 @@ events:
       Running the CXX compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/link.exe" "-v"
       Microsoft (R) Incremental Linker Version 14.29.30151.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 ...
