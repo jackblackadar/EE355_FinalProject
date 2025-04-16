@@ -1,9 +1,10 @@
 
 #ifndef NETWORK_H
 #define NETWORK_H
-
+#include "misc.h"
 #include "person.h"
 #include "date.h"
+
 // You may need to add more libraries 
 #include <stdlib.h>
 class Network{
@@ -24,6 +25,8 @@ class Network{
         void push_back(Person* newEntry);
         bool remove(string fname, string lname);
         void showMenu();
+        void loadDB(string filename); 
+        void saveDB(string filename); 
 };
 
 #endif

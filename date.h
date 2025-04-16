@@ -15,6 +15,8 @@ public:
     // function definition
     void print_date();
     void set_date();
+    void set_type(); // NOT IMPL
+    void set_type(string input);  // NOT IMPL
 };
 
 
