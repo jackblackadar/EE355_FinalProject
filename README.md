@@ -3,7 +3,11 @@
 Group: Jack Blackadar, Aleena Imran, Karen Mkrtchyan
 
 Directions for compiling the code:
-TODO
+$ cd build
+$ cmake --build
+$ make
+$ ./TestContact
+$ ./TestDate
 
 Not Working Parts: N/A
 
