@@ -12,11 +12,14 @@ private:
 public: 
     // constructor
     Date(unsigned short month, unsigned short day, unsigned short year);
+    Date(string input);
     // function definition
     void print_date();
     void set_date();
-    void set_type(); // NOT IMPL
-    void set_type(string input);  // NOT IMPL
+    int get_month() const;
+    int get_day() const;
+    int get_year() const;
+    bool Date::operator==(const Date& date);
 };
 
 

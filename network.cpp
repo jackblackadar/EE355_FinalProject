@@ -38,7 +38,7 @@ Person* Network::search(Person* searchEntry) {
     // TODO: Complete this method
     Person* current = head;
     while (current != NULL) {
-        if (*current == *searchEntry) return current;
+        if (*current == *searchEntry) return current; // WON'T WORK bc youre comparing memmory
         current = current->next;
     }
     return NULL;
@@ -119,8 +119,8 @@ void Network::saveDB(string filename) {
            << current->birthdate->get_year();
         file << ss.str() << endl;
 
-        file << "(" << current->email->get_type() << ") " << current->email->get_email() << endl;
-        file << "(" << current->phone->get_type() << ") " << current->phone->get_phone() << endl;
+        file <<  current->email->get_contact();
+        file << current->phone->get_contact();
         file << "--------------------" << endl;
 
         current = current->next;

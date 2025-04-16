@@ -32,6 +32,25 @@ Date::Date(unsigned short month, unsigned short day,  unsigned short year)  {
     }
 } 
 
+Date::Date(string input)  {
+    std::stringstream ss(input);
+    std::string token;
+    
+    int month, day, year;
+
+    // Get month
+    std::getline(ss, token, '/');
+    month = std::stoi(token);
+
+    // Get day
+    std::getline(ss, token, '/');
+    day = std::stoi(token);
+
+    // Get year
+    std::getline(ss, token);
+    year = std::stoi(token);
+} 
+
 void Date::set_date() {
     // get user info
     string temp;
@@ -69,4 +88,24 @@ void Date::set_date() {
         cout << "Invalid day. Setting to default." << endl;
         day = 1;
     }
+}
+
+int  Date::get_month() const {
+    return month;
+}
+ int Date::get_day() const{
+    return day;
+}
+int  Date::get_year() const{
+    return year;
+}
+
+bool Date::operator==(const Date& other_date){
+    // TODO: Complete this method!
+    // Note: you should check first name, last name and birthday between two persons
+    // refer to bool Date::operator==(const Date& rhs)
+
+    return (day == other_date.get_day() &&
+            month == other_date.get_month() &&
+            year == other_date.get_year());
 }
