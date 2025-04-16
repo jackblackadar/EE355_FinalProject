@@ -2,6 +2,7 @@
 #define DATE_H
 
 #include "fstream"
+#include <string>
 
 // Date class definition
 class Date {
@@ -12,7 +13,7 @@ private:
 public: 
     // constructor
     Date(unsigned short month, unsigned short day, unsigned short year);
-    Date(string input);
+    Date(std::string input);
     // function definition
     void print_date();
     void set_date();
