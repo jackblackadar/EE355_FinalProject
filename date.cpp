@@ -10,8 +10,14 @@ static const string monthNames[] = {"", "January", "February", "March", "April",
     "September", "October", "November", "December"};
 
 
+
 void Date::print_date() {
-    // print in format from manual
+    // Validate month before using it as an index
+    if (month < 1 || month > 12) {
+        cout << "Invalid month value: " << month << ". Cannot print date." << endl;
+        return;
+    }
+    
     string str_month = monthNames[month];
     cout << str_month << " " << day << ", " << year << endl;
 }
@@ -19,36 +25,51 @@ void Date::print_date() {
 Date::Date(unsigned short month, unsigned short day,  unsigned short year)  {
     // validate the day and month of date
     if (month < 1 || month > 12) {
-        cout << "Invalid month. Setting to default (1)." << endl;
         month = 1;
     }
     if (day < 1 || day > 31) {
-        cout << "Invalid day. Setting to default (1)." << endl;
         day = 1;
     }
     if (year < 1) {
-        cout << "Are you trying to store BCE years as negative? Setting to default (1)." << endl;
         year = 1;
     }
+
+    this->day = day;
+    this->month = month;
+    this->year = year;
 } 
 
 Date::Date(string input)  {
-    std::stringstream ss(input);
-    std::string token;
+    // Initialize with default values first
+    this->month = 1;
+    this->day = 1;
+    this->year = 2000;
     
-    int month, day, year;
-
-    // Get month
-    std::getline(ss, token, '/');
-    month = std::stoi(token);
-
-    // Get day
-    std::getline(ss, token, '/');
-    day = std::stoi(token);
-
-    // Get year
-    std::getline(ss, token);
-    year = std::stoi(token);
+    try {
+        std::stringstream ss(input);
+        std::string token;
+        
+        // Get month
+        std::getline(ss, token, '/');
+        int m = std::stoi(token);
+        
+        // Get day
+        std::getline(ss, token, '/');
+        int d = std::stoi(token);
+        
+        // Get year
+        std::getline(ss, token);
+        int y = std::stoi(token);
+        
+        // Validate and assign
+        if (m >= 1 && m <= 12) this->month = m;
+        if (d >= 1 && d <= 31) this->day = d;
+        if (y >= 1) this->year = y;
+    } 
+    catch (const std::exception& e) {
+        std::cout << "Error parsing date: " << input << ". Using default values." << std::endl;
+        // Keep default values
+    }
 } 
 
 void Date::set_date() {

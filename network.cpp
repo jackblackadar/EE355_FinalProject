@@ -3,13 +3,16 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <filesystem>
 using namespace std;
-namespace fs = std::filesystem;
+
+/*
+CHANGES MADE TO UPDATE CODE TO c++11 FROM c++17
+
+*/
 
 Network::Network() {
-    head = NULL;
-    tail = NULL;
+    head = nullptr;
+    tail = nullptr;
     count = 0;
 }
 
@@ -59,45 +62,61 @@ Person* Network::search(string fname, string lname) {
 void Network::loadDB(string filename) {
     // TODO: Complete this method
     ifstream file(filename);
-    if (!file.is_open()) return;
+    if (!file.is_open()) {
+        cerr << "Failed to open file: " << filename << endl;
+        return;
+    }
 
-    // Clear current list
-    Person* current = head;
-    while (current != NULL) {
-        Person* to_delete = current;
-        current = current->next;
+    // First clear existing network
+    while (head != nullptr) {
+        Person* to_delete = head;
+        head = head->next;
         delete to_delete;
     }
-    head = NULL;
-    tail = NULL;
+    
+    head = nullptr;
+    tail = nullptr;
     count = 0;
+    
+    // Read file line by line
+    try {
+        string line;
+        while (getline(file, line)) {
+            if (line.empty()) continue;
 
-    string line;
-    while (getline(file, line)) {
-        if (line.empty()) continue;
+            string fname = line;
+            string lname, bdate, email_str, phone_str;
 
-        string fname = line;
-        string lname, bdate, email_type, email_addr, phone_type, phone_num;
+            // Read required fields
+            if (!getline(file, lname)) break;
+            if (!getline(file, bdate)) break;
+            
+            // Read email line
+            if (!getline(file, line)) break;
+            size_t l = line.find(")");
+            if (l == string::npos) continue; // Skip malformed line
+            string email_type = line.substr(1, l - 1);
+            string email_addr = line.substr(l + 2);
 
-        getline(file, lname);
-        getline(file, bdate);
-        getline(file, line); // email line
-        size_t l = line.find(")");
-        email_type = line.substr(1, l - 1);
-        email_addr = line.substr(l + 2);
+            // Read phone line
+            if (!getline(file, line)) break;
+            l = line.find(")");
+            if (l == string::npos) continue; // Skip malformed line
+            string phone_type = line.substr(1, l - 1);
+            string phone_num = line.substr(l + 2);
 
-        getline(file, line); // phone line
-        l = line.find(")");
-        phone_type = line.substr(1, l - 1);
-        phone_num = line.substr(l + 2);
-
-        getline(file, line); // delimiter "--------------------"
-
-        Person* p = new Person(fname, lname, bdate, email_addr, phone_num);
-        p->email->set_type(email_type);
-        p->phone->set_type(phone_type);
-
-        push_back(p);
+            // Skip delimiter line
+            if (!getline(file, line)) break;
+            
+            // Create person and add to network
+            Person* p = new Person(fname, lname, bdate, email_addr, phone_num);
+            p->email->set_type(email_type);
+            p->phone->set_type(phone_type);
+                        
+            push_back(p);
+        }
+    } catch (const exception& e) {
+        cerr << "Error loading database: " << e.what() << endl;
     }
 
     file.close();
@@ -160,6 +179,30 @@ bool Network::remove(string fname, string lname) {
     return true;
 }
 
+void Network::push_front(Person* newEntry) {
+    newEntry->prev = NULL;
+    newEntry->next = head;
+
+    if (head != NULL)
+        head->prev = newEntry;
+    else
+        tail = newEntry;
+    
+    head = newEntry;
+    count++;
+}
+
+void Network::printDB() {
+    cout << "Number of people: " << count << endl;
+    cout << "-----------------------------" << endl;
+    Person* ptr = head;
+    while (ptr != nullptr) {
+        ptr->print_person();
+        cout << "-----------------------------" << endl;
+        ptr = ptr->next;
+    }
+}
+
 void Network::showMenu() {
     // TODO: Complete this method!
     // All the prompts are given to you, 
@@ -202,14 +245,13 @@ void Network::showMenu() {
             // TODO: Complete me!
             cout << "Loading network database \n";
 
-            for (const auto& entry : fs::directory_iterator(".")) {
-                string path = entry.path().string();
-                if (path.find("networkDB") != string::npos && path.substr(path.find_last_of(".") + 1) == "txt") {
-                    cout << path.substr(2) << endl; // remove "./"
-                }
-            }
-
+            #ifdef _WIN32
+                system("dir /b *networkDB*.txt");
+            #else
+                system("ls -1 *networkDB*.txt 2>/dev/null");
+            #endif
             cout << "Enter the name of the load file: ";
+
             getline(cin, fileName);
             ifstream check(fileName);
             if (!check.good()) {

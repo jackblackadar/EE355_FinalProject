@@ -4,16 +4,22 @@
 #include <sstream>
 using namespace std;
 
-Person::Person(){
+Person::Person() {
     // I'm already done! 
+    next = nullptr;
+    prev = nullptr;
     set_person();
 }
 
 Person::~Person(){
-    delete birthdate;
+    if (birthdate) delete birthdate;
     // TODO: complete the method!
-    delete phone;
-    delete email;
+    if (phone) delete phone;
+    if (email) delete email;
+
+    birthdate = nullptr;
+    phone = nullptr;
+    email = nullptr;
 }
 
 Person::Person(string f_name, string l_name, string b_date, string email_str, string phone_str){
@@ -25,9 +31,14 @@ Person::Person(string f_name, string l_name, string b_date, string email_str, st
 
     email = new Email("Work", email_str);  // default type
     phone = new Phone("Home", phone_str);  // default type
+
+    next = nullptr;
+    prev = nullptr;
 }
 
 Person::Person(string filename){
+    next = nullptr;
+    prev = nullptr;
     set_person(filename);
 }
 
@@ -72,6 +83,10 @@ void Person::set_person(string filename){
     // Look at person_template files as examples.     
     // Phone number in files can have '-' or not.
     // TODO: Complete this method!
+    // Initialize pointers to nullptr first
+    birthdate = nullptr;
+    phone = nullptr;
+    email = nullptr;
 
     ifstream file(filename);
     if (!file.is_open()) {
@@ -79,21 +94,33 @@ void Person::set_person(string filename){
         return;
     }
 
-    string line;
-    getline(file, f_name);
-    getline(file, l_name);
+    try {
+        string line;
+        if (!getline(file, f_name)) throw runtime_error("Failed to read first name");
+        if (!getline(file, l_name)) throw runtime_error("Failed to read last name");
 
-    string bdate, email_type, email_addr, phone_type, phone_num;
-    getline(file, bdate);
-    birthdate = new Date(bdate);
+        string bdate;
+        if (!getline(file, bdate)) throw runtime_error("Failed to read birthdate");
+        birthdate = new Date(bdate);
 
-    getline(file, email_type);
-    getline(file, email_addr);
-    email = new Email(email_type, email_addr);
+        string email_type, email_addr;
+        if (!getline(file, email_type)) throw runtime_error("Failed to read email type");
+        if (!getline(file, email_addr)) throw runtime_error("Failed to read email address");
+        email = new Email(email_type, email_addr);
 
-    getline(file, phone_type);
-    getline(file, phone_num);
-    phone = new Phone(phone_type, phone_num);
+        string phone_type, phone_num;
+        if (!getline(file, phone_type)) throw runtime_error("Failed to read phone type");
+        if (!getline(file, phone_num)) throw runtime_error("Failed to read phone number");
+        phone = new Phone(phone_type, phone_num);
+
+    } catch (const exception& e) {
+        // Clean up any allocated resources
+        if (birthdate) { delete birthdate; birthdate = nullptr; }
+        if (email) { delete email; email = nullptr; }
+        if (phone) { delete phone; phone = nullptr; }
+        
+        cerr << "Error reading file: " << e.what() << endl;
+    }
 
     file.close();
 }

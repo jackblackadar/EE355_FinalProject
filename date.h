@@ -20,7 +20,7 @@ public:
     int get_month() const;
     int get_day() const;
     int get_year() const;
-    bool Date::operator==(const Date& date);
+    bool operator==(const Date& date);
 };
 
 
