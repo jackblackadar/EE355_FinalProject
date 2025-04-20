@@ -302,7 +302,7 @@ void Network::showMenu() {
             }
             if (!found) cout << "Person not found! \n";
         } 
-        else if (opt == 6) { // connect menu
+        else if (opt == 6) { // connect menu, PHASE 2 CODE
             cout << "Make friends:";
 
             // get person info and check for existence
@@ -311,7 +311,7 @@ void Network::showMenu() {
             string p2_fname;
             string p2_lname;
             bool found = false;
-            cout << "Person 1\nFirst Name: ";
+            cout << "\nPerson 1\nFirst Name: ";
             getline(cin, p1_fname);
             cout << "Last Name: ";
             getline(cin, p1_lname);
@@ -321,7 +321,7 @@ void Network::showMenu() {
                 cout << "Person not found" << endl << endl;
                 continue;
             }
-            cout << "Person 2\n First Name: ";
+            cout << "Person 2\nFirst Name: ";
             getline(cin, p2_fname);
             cout << "Last Name: ";
             getline(cin, p2_lname);
@@ -333,16 +333,15 @@ void Network::showMenu() {
             }
 
             // people found, print info
+            cout << endl;
             p1_connect->print_person();
             cout << endl;
             p2_connect->print_person();
-            cout << endl;
         } else {
             cout << "Nothing matched!\n";
         }
 
         cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cout << "\n\nPress Enter key to go back to main menu ... ";
         string temp;
         std::getline(cin, temp);
