@@ -337,7 +337,6 @@ void Network::showMenu() {
             cout << endl;
             p2_connect->print_person();
             cout << endl;
-
         } else {
             cout << "Nothing matched!\n";
         }
