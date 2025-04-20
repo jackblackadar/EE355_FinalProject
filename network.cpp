@@ -5,10 +5,6 @@
 #include <sstream>
 using namespace std;
 
-/*
-CHANGES MADE TO UPDATE CODE TO c++11 FROM c++17
-
-*/
 
 Network::Network() {
     head = nullptr;
@@ -112,7 +108,7 @@ void Network::loadDB(string filename) {
             Person* p = new Person(fname, lname, bdate, email_addr, phone_num);
             p->email->set_type(email_type);
             p->phone->set_type(phone_type);
-                        
+
             push_back(p);
         }
     } catch (const exception& e) {
@@ -219,6 +215,7 @@ void Network::showMenu() {
         cout << "3. Add a new person \n";
         cout << "4. Remove a person \n";
         cout << "5. Print people with last name  \n";
+        cout << "6. Connect \n";  // added for phase 2
         cout << "\nSelect an option ... ";
 
         if (cin >> opt) {
@@ -267,7 +264,7 @@ void Network::showMenu() {
             // Add a new Person ONLY if it does not exist!
             cout << "Adding a new person \n";
             Person* newP = new Person();
-            if (search(newP) == NULL) {
+            if (search(newP) == NULL) {  // WILL NEVER NOT RETURN NULL?!?! RIGHT????
                 push_front(newP);
             } else {
                 cout << "Person already exists! \n";
@@ -304,6 +301,43 @@ void Network::showMenu() {
                 current = current->next;
             }
             if (!found) cout << "Person not found! \n";
+        } 
+        else if (opt == 6) { // connect menu
+            cout << "Make friends:";
+
+            // get person info and check for existence
+            string p1_fname;
+            string p1_lname;
+            string p2_fname;
+            string p2_lname;
+            bool found = false;
+            cout << "Person 1\nFirst Name: ";
+            getline(cin, p1_fname);
+            cout << "Last Name: ";
+            getline(cin, p1_lname);
+            Person* p1_connect = search(p1_fname, p1_lname);
+            if (p1_connect == nullptr) {  // no person 1 found
+                // return to main menu
+                cout << "Person not found" << endl << endl;
+                continue;
+            }
+            cout << "Person 2\n First Name: ";
+            getline(cin, p2_fname);
+            cout << "Last Name: ";
+            getline(cin, p2_lname);
+            Person* p2_connect = search(p2_fname, p2_lname);
+            if (p2_connect == nullptr) {  // no person 2 found
+                // return to main menu
+                cout << "Person not found" << endl << endl;
+                continue;
+            }
+
+            // people found, print info
+            p1_connect->print_person();
+            cout << endl;
+            p2_connect->print_person();
+            cout << endl;
+
         } else {
             cout << "Nothing matched!\n";
         }
