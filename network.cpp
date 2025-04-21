@@ -337,6 +337,10 @@ void Network::showMenu() {
             p1_connect->print_person();
             cout << endl;
             p2_connect->print_person();
+
+            // make friends by adding each to other vector
+            p1_connect->makeFriend(p2_connect);
+            p2_connect->makeFriend(p1_connect);
         } else {
             cout << "Nothing matched!\n";
         }
