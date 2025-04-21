@@ -1,4 +1,5 @@
 #include "person.h"
+#include "misc.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -13,7 +14,6 @@ Person::Person() {
 
 Person::~Person(){
     if (birthdate) delete birthdate;
-    // TODO: complete the method!
     if (phone) delete phone;
     if (email) delete email;
 
@@ -148,6 +148,14 @@ void Person::print_person(){
 	birthdate->print_date(); // why was this function given str input when it doesnt want one? "Month D, YYYY"
     phone->print();
     email->print();
+
+    // CHANGES FOR PHASE 2 BELOW
+    if (!myfriends.empty()) {  // if friends exist
+        for (Person* friend_ptr : myfriends) {  // iterate over each friend
+            string code = codeName(friend_ptr->f_name, friend_ptr->l_name);
+            cout << code << " (" << friend_ptr->f_name << " " << friend_ptr->l_name << ")" << endl;
+        }
+    }
 }
 
 
