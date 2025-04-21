@@ -149,3 +149,18 @@ void Person::print_person(){
     phone->print();
     email->print();
 }
+
+
+void Person::makeFriend(Person* newFriend) {
+    // push back new friend to the end of vector
+    myfriends.push_back(newFriend);
+
+    /*
+    // print all friends for debug
+    for (size_t i = 0; i < friends.size(); ++i) {
+        myfriends[i]->print_person();
+    }
+    cout << endl << endl;
+    */
+
+}
