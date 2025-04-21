@@ -3,6 +3,7 @@
 Group: Jack Blackadar, Aleena Imran, Karen Mkrtchyan
 
 Directions for compiling the code:
+$ mkdir build
 $ cd build
 $ cmake --build
 $ make
