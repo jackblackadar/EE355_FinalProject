@@ -1,4 +1,3 @@
-
 #include "misc.h"
 
 void printMe(string type){

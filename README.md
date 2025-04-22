@@ -5,7 +5,8 @@ Group: Jack Blackadar, Aleena Imran, Karen Mkrtchyan
 Directions for compiling the code, use make or cmake --build depenging if on linux/mac or windows:
 $ mkdir build
 $ cd build
-$ cmake --build [OR cmake]
+$ cmake ..
+$ make
 $ ./TestContact
 $ ./TestDate
 

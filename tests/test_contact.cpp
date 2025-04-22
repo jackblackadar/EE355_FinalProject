@@ -3,7 +3,7 @@
 int main(){
     std::cout << "----Testing class Email-----\n";
     {
-        Email testEmail("school email", "kmkrtchy@usc.edu");
+        Email testEmail("school email", "bob@usc.edu");
         testEmail.set_contact();
         /* 
         input in 

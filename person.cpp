@@ -6,7 +6,6 @@
 using namespace std;
 
 Person::Person() {
-    // I'm already done! 
     next = nullptr;
     prev = nullptr;
     set_person();
@@ -26,6 +25,7 @@ Person::Person(string f_name, string l_name, string b_date, string email_str, st
     // phone and email strings are in full version
     this->f_name = f_name;
     this->l_name = l_name;
+    this->namecode = codeName(f_name, l_name);
     birthdate = new Date(b_date);
 
     email = new Email("Work", email_str);  // default type
@@ -53,26 +53,27 @@ void Person::set_person(){
 
     cout << "First Name: ";
     // pay attention to how we read first name, as it can have spaces!
-    std::getline(std::cin,f_name);
+    getline(cin,f_name);
 
 	cout << "Last Name: ";
-    std::getline(std::cin,l_name);
+    getline(cin,l_name);
+    this->namecode = codeName(f_name, l_name);
 
     cout << "Birthdate (M/D/YYYY): ";
-    std::getline(std::cin,temp);
+    getline(cin,temp);
     // pay attention to how we passed argument to the constructor of a new object created dynamically using new command
     birthdate = new Date(temp); 
 
     cout << "Type of email address: ";
-    std::getline(std::cin, type);
+    getline(cin, type);
     cout << "Email address: ";
-    std::getline(std::cin, temp);
+    getline(cin, temp);
     email = new Email(type, temp);
 
     cout << "Type of phone number: ";
-    std::getline(std::cin, type);
+    getline(cin, type);
     cout << "Phone number: ";
-    std::getline(std::cin, temp);
+    getline(cin, temp);
     phone = new Phone(type, temp);
 }
 
@@ -94,9 +95,10 @@ void Person::set_person(string filename){
     }
 
     try {
-        string line;
+        string line; // what is this for? 
         if (!getline(file, f_name)) throw runtime_error("Failed to read first name");
         if (!getline(file, l_name)) throw runtime_error("Failed to read last name");
+        this->namecode = codeName(f_name, l_name);
 
         string bdate;
         if (!getline(file, bdate)) throw runtime_error("Failed to read birthdate");
@@ -144,7 +146,7 @@ bool Person::operator!=(const Person& rhs){
 void Person::print_person(){
     // Already implemented for you! Do not change!
 	cout << l_name <<", " << f_name << endl;
-	birthdate->print_date(); // why was this function given str input when it doesnt want one? "Month D, YYYY"
+	birthdate->print_date();
     phone->print();
     email->print();
 
@@ -172,10 +174,29 @@ void Person::makeFriend(Person* newFriend) {
 
 }
 
+void Person::swap(int index){
+    Person* temp = myfriends[index];
+    myfriends[index] = myfriends[index+1];
+    myfriends[index+1] = temp;
+}
+
 void Person::print_friends(){
      // print all friends for debug
-     for (size_t i = 0; i < myfriends.size(); ++i) {
+    bool made_swap = false;
+    do
+    {      
+        made_swap = false;
+        for (size_t i = 0; i < myfriends.size()-1; ++i) {
+            if(myfriends[i]->namecode > myfriends[i+1]->namecode){
+                made_swap = true;
+                swap(i);
+            }
+        } 
+    } while (made_swap);
+
+    for (size_t i = 0; i < myfriends.size(); ++i) {
         myfriends[i]->print_person();
+        cout << "------------------------------" << endl;
     }
     cout << endl << endl;
 }

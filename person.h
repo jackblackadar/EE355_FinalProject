@@ -19,6 +19,8 @@ class Person{
         Person* next;
         Person* prev;
         vector<Person*> myfriends;  // list of friends
+        string namecode; // used for sorting later
+        void swap(int index);
     public: 
         Person();
         ~Person();
