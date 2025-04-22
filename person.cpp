@@ -171,3 +171,11 @@ void Person::makeFriend(Person* newFriend) {
     */
 
 }
+
+void Person::print_friends(){
+     // print all friends for debug
+     for (size_t i = 0; i < myfriends.size(); ++i) {
+        myfriends[i]->print_person();
+    }
+    cout << endl << endl;
+}
