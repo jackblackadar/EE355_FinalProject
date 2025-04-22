@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <cstdlib> 
 using namespace std;
 
 
@@ -303,8 +304,8 @@ void Network::showMenu() {
             if (!found) cout << "Person not found! \n";
         } 
         else if (opt == 6) { // connect menu, PHASE 2 CODE
+            system("cls"); // clear screen for option 6
             cout << "Make friends:";
-
             // get person info and check for existence
             string p1_fname;
             string p1_lname;

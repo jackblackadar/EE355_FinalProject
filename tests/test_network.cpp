@@ -13,9 +13,13 @@ int main() {
         
         // Print the network to verify contents
         test.printDB();
-    } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+        test.showMenu();
+
+        } catch (const std::exception& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+        }
+
+       
     
     return 0;
 }
