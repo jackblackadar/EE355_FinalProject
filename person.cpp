@@ -23,7 +23,6 @@ Person::~Person(){
 }
 
 Person::Person(string f_name, string l_name, string b_date, string email_str, string phone_str){
-    // TODO: Complete this method!
     // phone and email strings are in full version
     this->f_name = f_name;
     this->l_name = l_name;

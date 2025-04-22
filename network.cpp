@@ -34,10 +34,9 @@ Network::~Network() {
 Person* Network::search(Person* searchEntry) {
     // Searches the Network for searchEntry
     // if found, returns a pointer to it, else returns NULL
-    // TODO: Complete this method
     Person* current = head;
     while (current != NULL) {
-        if (*current == *searchEntry) return current; // WON'T WORK bc youre comparing memmory
+        if (*current == *searchEntry) return current; 
         current = current->next;
     }
     return NULL;
@@ -119,7 +118,6 @@ void Network::loadDB(string filename) {
 }
 
 void Network::saveDB(string filename) {
-    // TODO: Complete this method
     ofstream file(filename);
     if (!file.is_open()) return;
 
@@ -134,8 +132,8 @@ void Network::saveDB(string filename) {
            << current->birthdate->get_year();
         file << ss.str() << endl;
 
-        file <<  current->email->get_contact();
-        file << current->phone->get_contact();
+        file <<  current->email->get_contact() << endl;
+        file << current->phone->get_contact() << endl;
         file << "--------------------" << endl;
 
         current = current->next;
@@ -160,15 +158,20 @@ void Network::push_back(Person* newEntry) {
 }
 
 bool Network::remove(string fname, string lname) {
-    // TODO: Complete this method
     Person* target = search(fname, lname);
     if (!target) return false;
 
-    if (target->prev) target->prev->next = target->next;
-    else head = target->next;
+    if (target->prev) {
+        target->prev->next = target->next;
+    } else {
+        head = target->next;
+    }
 
-    if (target->next) target->next->prev = target->prev;
-    else tail = target->prev;
+    if (target->next) {
+        target->next->prev = target->prev;
+    } else {
+        tail = target->prev;
+    }
 
     delete target;
     count--;
@@ -232,23 +235,21 @@ void Network::showMenu() {
         cout << "\033[2J\033[1;1H";
 
         if (opt == 1) {
-            // TODO: Complete me!
+            // write network to a file
             cout << "Saving network database \n";
             cout << "Enter the name of the save file: ";
             getline(cin, fileName);
             saveDB(fileName);
             cout << "Network saved in " << fileName << endl;
         } else if (opt == 2) {
-            // TODO: Complete me!
+            // read network from a file
             cout << "Loading network database \n";
-
             #ifdef _WIN32
                 system("dir /b *networkDB*.txt");
             #else
                 system("ls -1 *networkDB*.txt 2>/dev/null");
             #endif
             cout << "Enter the name of the load file: ";
-
             getline(cin, fileName);
             ifstream check(fileName);
             if (!check.good()) {
@@ -259,21 +260,17 @@ void Network::showMenu() {
             }
             check.close();
         } else if (opt == 3) {
-            // TODO: Complete me!
-            // TODO: use push_front, and not push_back 
-            // Add a new Person ONLY if it does not exist!
+            // add person to network
             cout << "Adding a new person \n";
             Person* newP = new Person();
-            if (search(newP) == NULL) {  // WILL NEVER NOT RETURN NULL?!?! RIGHT????
+            if (search(newP) == NULL) { 
                 push_front(newP);
             } else {
                 cout << "Person already exists! \n";
                 delete newP;
             }
         } else if (opt == 4) {
-            // TODO: Complete me!
-            // if found, cout << "Remove Successful! \n";
-            // if not found: cout << "Person not found! \n";
+            // remove a person from network
             cout << "Removing a person \n";
             cout << "First name: ";
             getline(cin, fname);
