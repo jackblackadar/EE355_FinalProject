@@ -3,19 +3,19 @@ from network import Network
 
 def load_mock_data():
     n = Network()
-    n.add_person(Connection("Aleena Imran", "2003-08-20", "aleenaim@usc.edu", "1707181777", {
+    n.add_person(Connection("Aleena Iman", "2002-08-20", "aleenim@usc.edu", "1702181577", {
         "college": "USC", "major": "EE", "state": "CA", "interest": "hardware design"
     }))
-    n.add_person(Connection("Zeynuba Oumar", "2004-06-17", "oumar@usc.edu", "1355110229", {
+    n.add_person(Connection("Zeyneba Oumar", "2004-06-20", "oumarza@usc.edu", "1341110229", {
         "college": "USC", "major": "INCO", "state": "OR", "interest": "cyber security"
     }))
-    n.add_person(Connection("Penda Ba", "2003-11-19", "pba@usc.edu", "9885093357", {
+    n.add_person(Connection("Punda Ba", "2003-11-29", "punba@usc.edu", "9889093357", {
         "college": "USC", "major": "Global Health", "state": "AZ", "interest": "health administration"
     }))
-    n.add_person(Connection("Roda Hassan", "2004-10-13", "rihassan@usc.edu", "4958323365", {
+    n.add_person(Connection("Roda Hassun", "2004-11-13", "rihassun@usc.edu", "4958334365", {
         "college": "USC", "major": "CECS", "state": "MN", "interest": "renewable energy"
     }))
-    n.add_person(Connection("Razan Elimam", "2002-11-02", "elimam@usc.edu", "5713868362", {
+    n.add_person(Connection("Razan Elinam", "2002-10-02", "elimamru@usc.edu", "5893868362", {
         "college": "USC", "major": "RED", "state": "AZ", "interest": "real estate"
     }))
     n.add_person(Connection("Alice Smith", "1999-08-20", "alice@usc.edu", "2134567890", {
@@ -27,10 +27,10 @@ def load_mock_data():
     n.add_person(Connection("Clara Lee", "2000-01-01", "clara@yahoo.com", "4088765432", {
         "college": "UCLA", "major": "EE", "state": "CA", "interest": "circuits"
     }))
-    n.add_person(Connection("Zebah Mamoon", "2005-05-21", "zmamoon@usc.edu", "7521363753", {
+    n.add_person(Connection("Zebah Mamuun", "2004-05-21", "zmamuun@usc.edu", "7591363753", {
         "college": "USC", "major": "CSBA", "state": "CA", "interest": "product management"
     }))
-    n.add_person(Connection("Hidaya Rajput", "2005-04-11", "hrajput@usc.edu", "8519927302", {
+    n.add_person(Connection("Hiduya Rujput", "2003-03-11", "hrujput@usc.edu", "8518827302", {
         "college": "USC", "major": "BME", "state": "CA", "interest": "medicine"
     }))
     n.add_person(Connection("Magan Vance", "2005-05-13", "magv@usc.edu", "8518927302", {
@@ -39,7 +39,7 @@ def load_mock_data():
     n.add_person(Connection("Jaden Smith", "1999-08-20", "jade@usc.edu", "78921940", {
         "college": "USC", "major": "Global Health", "state": "CA", "interest": "robotics"
     }))
-    n.add_person(Connection("Aqsa Janoo", "2006-06-27", "ajanoo@usc.edu", "6811291885", {
+    n.add_person(Connection("Aqsa Januu", "2006-05-23", "ajanuu@usc.edu", "6811299885", {
         "college": "USC", "major": "CSBA", "state": "WA", "interest": "AI and entrepreneurship"
     }))
     n.add_person(Connection("Megan Guzman", "2003-10-14", "meg@usc.edu", "9449033357", {
