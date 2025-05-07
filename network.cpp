@@ -55,7 +55,6 @@ Person* Network::search(string fname, string lname) {
 }
 
 void Network::loadDB(string filename) {
-    // TODO: Complete this method
     ifstream file(filename);
     if (!file.is_open()) {
         cerr << "Failed to open file: " << filename << endl;
@@ -73,14 +72,21 @@ void Network::loadDB(string filename) {
     tail = nullptr;
     count = 0;
     
+    // For storing friend connections to process after all people are loaded
+    vector<pair<Person*, vector<string>>> friendsToConnect;
+    
     // Read file line by line
     try {
         string line;
         while (getline(file, line)) {
             if (line.empty()) continue;
-
+            
+            // Skip delimiter lines
+            if (line.find("--------------------") != string::npos) continue;
+            
             string fname = line;
             string lname, bdate, email_str, phone_str;
+            vector<string> friends;
 
             // Read required fields
             if (!getline(file, lname)) break;
@@ -99,21 +105,62 @@ void Network::loadDB(string filename) {
             if (l == string::npos) continue; // Skip malformed line
             string phone_type = line.substr(1, l - 1);
             string phone_num = line.substr(l + 2);
-
-            // Skip delimiter line
-            if (!getline(file, line)) break;
             
             // Create person and add to network
             Person* p = new Person(fname, lname, bdate, email_addr, phone_num);
             p->email->set_type(email_type);
             p->phone->set_type(phone_type);
-
             push_back(p);
+            
+            // Read potential friend entries until we hit a delimiter or EOF
+            while (getline(file, line)) {
+                if (line.empty() || line.find("--------------------") != string::npos) {
+                    break; // End of this person's data
+                }
+                
+                // This must be a friend entry - store it for processing later
+                // Format is: code (fname lname)
+                size_t open_paren = line.find("(");
+                size_t close_paren = line.find(")");
+                
+                if (open_paren != string::npos && close_paren != string::npos) {
+                    string friendName = line.substr(open_paren + 1, close_paren - open_paren - 1);
+                    friends.push_back(friendName);
+                }
+            }
+            
+            // Store this person and their friends for the second pass
+            if (!friends.empty()) {
+                friendsToConnect.push_back(make_pair(p, friends));
+            }
         }
+        
+        // Second pass: Connect friends now that all people are loaded
+        for (const auto& connection : friendsToConnect) {
+            Person* person = connection.first;
+            const vector<string>& friendNames = connection.second;
+            
+            for (const string& friendName : friendNames) {
+                // Parse the friend name - format is "fname lname"
+                size_t spacePos = friendName.find(" ");
+                if (spacePos == string::npos) continue; // Invalid format
+                
+                string friendFname = friendName.substr(0, spacePos);
+                string friendLname = friendName.substr(spacePos + 1);
+                
+                // Find this friend in the network
+                Person* friendPerson = search(friendFname, friendLname);
+                if (friendPerson) {
+                    // Establish the friend connection
+                    person->makeFriend(friendPerson);
+                }
+            }
+        }
+        
     } catch (const exception& e) {
         cerr << "Error loading database: " << e.what() << endl;
     }
-
+    
     file.close();
 }
 
