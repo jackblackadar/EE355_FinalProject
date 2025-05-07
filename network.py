@@ -1,9 +1,34 @@
+from connection import Connection
+
 class Network:
     def __init__(self):
         self.people = []
 
     def add_person(self, person):
         self.people.append(person)
+
+    def remove_person_by_name(self, name):
+        self.people = [p for p in self.people if p.name.lower() != name.lower()]
+
+    def save_to_file(self, filename):
+        with open(filename, 'w') as f:
+            for p in self.people:
+                extras = ",".join([f"{k}={v}" for k, v in p.extra_info.items()])
+                f.write(f"{p.name}|{p.birthdate}|{p.email}|{p.phone}|{extras}\n")
+
+    def load_from_file(self, filename):
+        self.people.clear()
+        try:
+            with open(filename, 'r') as f:
+                for line in f:
+                    parts = line.strip().split("|")
+                    if len(parts) != 5:
+                        continue
+                    name, dob, email, phone, extras_str = parts
+                    extras = dict(e.split("=") for e in extras_str.split(",") if "=" in e)
+                    self.add_person(Connection(name, dob, email, phone, extras))
+        except FileNotFoundError:
+            print(f"File '{filename}' not found. Starting with empty network.")
 
     def search_by_any(self, query):
         results = []
@@ -32,12 +57,11 @@ class Network:
                 score += 1
             scores.append((score, other))
         scores.sort(reverse=True, key=lambda x: x[0])
-        return [other for _, other in scores[:3]]  # top 3 recommendations
-    
+        return [other for _, other in scores[:3]]
+
     def mutual_connections(self, person):
         print(f"\nMutual Connections for {person.name}:")
         primary_recs = self.recommend(person)
-
         for rec in primary_recs:
             mutuals = []
             for p in self.people:
@@ -51,4 +75,3 @@ class Network:
                     print(f"  - You both may like: {m.name}")
             else:
                 print("  No mutual strong connections found.")
-

@@ -57,9 +57,7 @@ FEATURES IMPLEMENTED:
    Recommendations are ranked by score and displayed in descending order.
 
 4. MUTUAL CONNECTIONS FINDER (**NEW FEATURE**):
-   This is a unique addition. For a selected person, the program shows their top 3 recommended connections,
-   and for each, it finds and displays any mutual strong recommendations.
-   This mimics social networking behavior like “You both may know...”
+   This is a unique addition. For a selected person, the program shows their top 3 recommended 	  connections, and for each, it finds and displays any mutual strong recommendations. This mimics social networking behavior like “You both may know...”
 
 ===========================
 EXAMPLE USAGE:

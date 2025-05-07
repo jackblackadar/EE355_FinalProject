@@ -1,18 +1,14 @@
-Julia Scarlett Elizabeth
-Louis-Dreyfus
-1/13/1961
-(Gmail) something@email.com
-(Office) 310-291-7482
---------------------
-Martin
-Van Nostrand
-07/24/1949
-(Yahoo) myemail@yahoo.com
-(Home) 2244325809
---------------------
-Truman
-Burbank
-1/17/1962
-(Official) document@info.edu
-(Work) 2135179989
---------------------
+Aleena Imran|2003-08-20|aleenaim@usc.edu|1707181777|college=USC,major=EE,state=CA,interest=hardware design
+Zeynuba Oumar|2004-06-17|oumar@usc.edu|1355110229|college=USC,major=INCO,state=OR,interest=cyber security
+Penda Ba|2003-11-19|pba@usc.edu|9885093357|college=USC,major=Global Health,state=AZ,interest=health administration
+Roda Hassan|2004-10-13|rihassan@usc.edu|4958323365|college=USC,major=CECS,state=MN,interest=renewable energy
+Razan Elimam|2002-11-02|elimam@usc.edu|5713868362|college=USC,major=RED,state=AZ,interest=real estate
+Alice Smith|1999-08-20|alice@usc.edu|2134567890|college=USC,major=EE,state=CA,interest=robotics
+Bob Johnson|1998-04-10|bob@gmail.com|3101234567|college=USC,major=CS,state=CA,interest=AI
+Clara Lee|2000-01-01|clara@yahoo.com|4088765432|college=UCLA,major=EE,state=CA,interest=circuits
+Zebah Mamoon|2005-05-21|zmamoon@usc.edu|7521363753|college=USC,major=CSBA,state=CA,interest=product management
+Hidaya Rajput|2005-04-11|hrajput@usc.edu|8519927302|college=USC,major=BME,state=CA,interest=medicine
+Magan Vance|2005-05-13|magv@usc.edu|8518927302|college=USC,major=BME,state=CA,interest=medical devices
+Jaden Smith|1999-08-20|jade@usc.edu|78921940|college=USC,major=Global Health,state=CA,interest=robotics
+Aqsa Janoo|2006-06-27|ajanoo@usc.edu|6811291885|college=USC,major=CSBA,state=WA,interest=AI and entrepreneurship
+Megan Guzman|2003-10-14|meg@usc.edu|9449033357|college=USC,major=Biology,state=OR,interest=health administration
