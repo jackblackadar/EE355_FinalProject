@@ -12,10 +12,10 @@ int main() {
 	cout << "-----------------------------" << endl;
 
 
-	// Then try to load the file
-	test.loadDB("networkDB.txt");
-	cout << "Network loaded successfully!" << endl;
-	cout << "-----------------------------" << endl;
+	// // Then try to load the file
+	// test.loadDB("networkDB.txt");
+	// cout << "Network loaded successfully!" << endl;
+	// cout << "-----------------------------" << endl;
 
 
 	// call functions from network

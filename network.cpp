@@ -134,6 +134,14 @@ void Network::saveDB(string filename) {
 
         file <<  current->email->get_contact() << endl;
         file << current->phone->get_contact() << endl;
+
+        if (!current->myfriends.empty()) {  // if friends exist
+            for (Person* friend_ptr : current->myfriends) {  // iterate over each friend
+                string code = codeName(friend_ptr->f_name, friend_ptr->l_name);
+                file << code << " (" << friend_ptr->f_name << " " << friend_ptr->l_name << ")" << endl;
+            }
+        }
+
         file << "--------------------" << endl;
 
         current = current->next;
@@ -244,11 +252,11 @@ void Network::showMenu() {
         } else if (opt == 2) {
             // read network from a file
             cout << "Loading network database \n";
-            #ifdef _WIN32
-                system("dir /b *networkDB*.txt");
-            #else
-                system("ls -1 *networkDB*.txt 2>/dev/null");
-            #endif
+            // #ifdef _WIN32
+            //     system("dir /b *networkDB*.txt");
+            // #else
+            //     system("ls -1 *networkDB*.txt 2>/dev/null");
+            // #endif
             cout << "Enter the name of the load file: ";
             getline(cin, fileName);
             ifstream check(fileName);
