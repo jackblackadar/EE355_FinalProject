@@ -25,13 +25,16 @@ void Date::print_date() {
 Date::Date(unsigned short month, unsigned short day,  unsigned short year)  {
     // validate the day and month of date
     if (month < 1 || month > 12) {
+        cout << "Invalid month value: " << month << ". Setting to default 1." << endl;
         month = 1;
     }
     if (day < 1 || day > 31) {
         day = 1;
+        cout << "Invalid day value: " << day << ". Setting to default 1." << endl;
     }
     if (year < 1) {
         year = 1;
+        cout << "Invalid year value: " << year << ". Setting to default 1." << endl;
     }
 
     this->day = day;
@@ -46,28 +49,47 @@ Date::Date(string input)  {
     this->year = 2000;
     
     try {
-        std::stringstream ss(input);
-        std::string token;
+        stringstream ss(input);
+        string token;
         
         // Get month
-        std::getline(ss, token, '/');
+        getline(ss, token, '/');
         int m = std::stoi(token);
         
         // Get day
-        std::getline(ss, token, '/');
+        getline(ss, token, '/');
         int d = std::stoi(token);
         
         // Get year
-        std::getline(ss, token);
+        getline(ss, token);
         int y = std::stoi(token);
         
         // Validate and assign
-        if (m >= 1 && m <= 12) this->month = m;
-        if (d >= 1 && d <= 31) this->day = d;
-        if (y >= 1) this->year = y;
+        if (m >= 1 && m <= 12) {
+            this->month = 1;
+        } 
+        else {
+            cout << "Invalid month value: " << m << ". Setting to default 1." << endl;
+            this->month = 1;
+        }
+
+        if (d >= 1 && d <= 31) { 
+            this->day = d;
+        }
+        else {
+            cout << "Invalid day value: " << d << ". Setting to default 1." << endl;
+            this->day = 1;
+        }
+        if (y >= 1) {
+            this->year = y;
+        }
+        else {
+            cout << "Invalid year value: " << y << ". Setting to default 2000." << endl;
+            this->year = 2000;
+        }
     } 
     catch (const std::exception& e) {
-        std::cout << "Error parsing date: " << input << ". Using default values." << std::endl;
+        cout << "Error parsing date: " << input << ". Using default values." << std::endl;
         // Keep default values
     }
 } 
