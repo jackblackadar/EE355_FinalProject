@@ -1,5 +1,19 @@
 from connection import Connection
 from network import Network
+import google.generativeai as genai
+import pygame
+
+
+genai.configure(api_key="AIzaSyAcK1OxBZStaq11Myeyd7VQ4HLfi0gw--4")  
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")  # or "gemini-1.5-pro"
+pygame.mixer.init()
+
+print("\n\n\n")
+response = model.generate_content("Come up with a welcome greeting to a new user of a social network. The greeting should be friendly and welcoming, and it should encourage the user to explore the features of the network. The greeting should also include a brief overview of the network's purpose and how it can help users connect with others.")
+
+print(response.text)
+sound = pygame.mixer.Sound("fanfare.wav")
+sound.play()
 
 def input_person():
     name = input("Name: ")
@@ -31,6 +45,8 @@ def main():
         print("0. Exit")
 
         choice = input("Enter choice: ")
+        sound = pygame.mixer.Sound("btn_click.wav")
+        sound.play()
         if choice == "1":
             q = input("Enter search query: ")
             results = network.search_by_any(q)
@@ -77,3 +93,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
